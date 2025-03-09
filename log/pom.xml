@@ -14,21 +14,5 @@
         <maven.compiler.target>17</maven.compiler.target>
         <exec.mainClass>com.log.Log</exec.mainClass>
     </properties>
-    
-    <!-- Repositório do JitPack -->
-    <repositories>
-        <repository>
-            <id>jitpack.io</id>
-            <url>https://jitpack.io</url>
-        </repository>
-    </repositories>
-
-    <!-- Dependência do projeto no JitPack -->
-    <dependencies>
-	<dependency>
-	    <groupId>com.github.laratidesco</groupId>
-	    <artifactId>log</artifactId>
-	    <version>Tag</version>
-	</dependency>
-    </dependencies>
+   
 </project>
