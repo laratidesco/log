@@ -26,7 +26,7 @@ public class CSVPrinter {
         // Definindo a mensagem de log
         String logMessage;
         // Definindo o nome do arquivo de acordo com o nome do cliente
-        var FILE_PATH = ("log/" + log.getNome() + "_RegistroLog.csv"); 
+        String FILE_PATH = ("log/" + log.getNome() + "_RegistroLog.csv");
         // Garantindo que o diretório de log existe
         File logDirectory = new File("log");
         if (!logDirectory.exists()) {

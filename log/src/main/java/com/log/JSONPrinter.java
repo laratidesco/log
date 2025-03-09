@@ -25,7 +25,7 @@ public class JSONPrinter {
         // Definindo a mensagem de log
         String logMessage;
         // Definindo o nome do arquivo de acordo com o nome do cliente
-        var FILE_PATH = ("log/" + log.getNome() + "_RegistroLog.json"); 
+        String FILE_PATH = ("log/" + log.getNome() + "_RegistroLog.json");
         // Garantindo que o diretório de log existe
         File logDirectory = new File("log");
         if (!logDirectory.exists()) {
