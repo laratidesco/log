@@ -1,4 +1,7 @@
-package com.log;
+package com.log.adaptador;
+
+import com.log.adaptado.CSVPrinter;
+import com.log.model.LogRegister;
 
 /**
  *

@@ -1,4 +1,4 @@
-package com.log;
+package com.log.model;
 
 /**
  *

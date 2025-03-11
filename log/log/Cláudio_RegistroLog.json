@@ -1,0 +1,16 @@
+[
+    {
+        "Usuario": "Lara",
+        "Hora": "12:07:36",
+        "Operacao": "Compartilhamento",
+        "Data": "11/03/2025",
+        "Nome": "Cláudio"
+    },
+    {
+        "Usuario": "Lara",
+        "Hora": "12:07:36",
+        "Operacao": "Exlusão",
+        "Data": "11/03/2025",
+        "Nome": "Cláudio"
+    }
+]

@@ -1,1 +1,32 @@
-"Compartilhamento":  Fábio, (09/03/2025 11:59:19, Lara);
+[
+    {
+        "Usuario": "Lara",
+        "Hora": "12:07:36",
+        "Operacao": "Exclusão",
+        "Data": "11/03/2025",
+        "Nome": "Fábio"
+    },
+    {
+        "Falha": "Falha X",
+        "Usuario": "Lara",
+        "Hora": "12:07:36",
+        "Operacao": "Inclusão",
+        "Data": "11/03/2025",
+        "Nome": "Fábio"
+    },
+    {
+        "Usuario": "Lara",
+        "Hora": "12:07:36",
+        "Operacao": "Inclusão",
+        "Data": "11/03/2025",
+        "Nome": "Fábio"
+    },
+    {
+        "Falha": "Falha X",
+        "Usuario": "Lara",
+        "Hora": "12:07:36",
+        "Operacao": "Compartilhamento",
+        "Data": "11/03/2025",
+        "Nome": "Fábio"
+    }
+]

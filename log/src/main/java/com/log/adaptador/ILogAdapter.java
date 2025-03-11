@@ -1,4 +1,6 @@
-package com.log;
+package com.log.adaptador;
+
+import com.log.model.LogRegister;
 
 /**
  *

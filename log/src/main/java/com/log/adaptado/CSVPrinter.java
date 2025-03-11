@@ -1,4 +1,6 @@
-package com.log;
+package com.log.adaptado;
+
+import com.log.model.LogRegister;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -13,10 +15,10 @@ import java.time.format.DateTimeFormatter;
  *
  * @author lara_
  */
-public class JSONPrinter {
+public class CSVPrinter {
     private static final DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-    private static final DateTimeFormatter TIME_FORMAT = DateTimeFormatter.ofPattern("hh:mm:ss");
-    
+    private static final DateTimeFormatter TIME_FORMAT = DateTimeFormatter.ofPattern("HH:mm:ss");
+
 
     public void escreveLog(LogRegister log) {
         // Obtendo a data e hora formatada
@@ -25,7 +27,7 @@ public class JSONPrinter {
         // Definindo a mensagem de log
         String logMessage;
         // Definindo o nome do arquivo de acordo com o nome do cliente
-        String FILE_PATH = ("log/" + log.getNome() + "_RegistroLog.json");
+        String FILE_PATH = ("log/" + log.getNome() + "_RegistroLog.csv");
         // Garantindo que o diretório de log existe
         File logDirectory = new File("log");
         if (!logDirectory.exists()) {
@@ -34,21 +36,25 @@ public class JSONPrinter {
 
         // Caso a operação tenha sucesso
         if (log.isSucesso()) {
-            logMessage = String.format("\"%s\":  %s, (%s %s, %s);",
-                    log.getOperacao(), log.getNome(), data, hora, log.getUsuario());
-        } 
+            logMessage = String.format( "\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\"\n",
+                    log.getMensagem(), log.getOperacao(), log.getNome(), data, hora, log.getUsuario());
+
+        }
         // Caso a operação falhe
         else {
-            logMessage = String.format("Ocorreu a falha \"%s\" ao realizar a \"%s\" do contato %s, (%s, %s, %s).\n",
+            logMessage = String.format("\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\"\n",
                     log.getMensagem(), log.getOperacao(), log.getNome(), data, hora, log.getUsuario());
         }
+
 
         // Escrevendo a mensagem no arquivo de log com codificação UTF-8 para exibir acentuação
         try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(
                 new FileOutputStream(FILE_PATH, true), StandardCharsets.UTF_8))) {
-            writer.write(logMessage); 
+            writer.write(logMessage); // Adicionando parágrafo
         } catch (IOException e) {
+            // Tratamento de exceção
+            System.err.println("Erro ao escrever no arquivo de log: " + e.getMessage());
+            e.printStackTrace(); // Imprime o rastreamento da pilha
         }
     }
-
 }
