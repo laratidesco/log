@@ -24,33 +24,43 @@ public class CSVPrinter {
         // Obtendo a data e hora formatada
         String data = LocalDateTime.now().format(DATE_FORMAT);
         String hora = LocalDateTime.now().format(TIME_FORMAT);
+
         // Definindo a mensagem de log
         String logMessage;
+
         // Definindo o nome do arquivo de acordo com o nome do cliente
         String FILE_PATH = ("log/" + log.getNome() + "_RegistroLog.csv");
+
         // Garantindo que o diretório de log existe
         File logDirectory = new File("log");
         if (!logDirectory.exists()) {
             logDirectory.mkdirs(); // Cria o diretório se não existir
         }
 
-        // Caso a operação tenha sucesso
+        // Define a mensagem caso a operação tenha sucesso
         if (log.isSucesso()) {
-            logMessage = String.format( "\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\"\n",
+            logMessage = String.format( "\n\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\"",
                     log.getMensagem(), log.getOperacao(), log.getNome(), data, hora, log.getUsuario());
 
         }
-        // Caso a operação falhe
+        // Define a mensagem caso a operação falhe
         else {
-            logMessage = String.format("\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\"\n",
+            logMessage = String.format("\n\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\"",
                     log.getMensagem(), log.getOperacao(), log.getNome(), data, hora, log.getUsuario());
         }
 
 
         // Escrevendo a mensagem no arquivo de log com codificação UTF-8 para exibir acentuação
         try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(
-                new FileOutputStream(FILE_PATH, true), StandardCharsets.UTF_8))) {
-            writer.write(logMessage); // Adicionando parágrafo
+                    new FileOutputStream(FILE_PATH, true), StandardCharsets.UTF_8))) {
+
+            // Se o arquivo for novo, escreve o cabeçalho do mesmo
+            File logFile = new File(FILE_PATH);
+            if (!logFile.exists() || logFile.length() == 0) {
+                writer.write("\"Mensagem\",\"Operação\",\"Nome\",\"Data\",\"Hora\",\"Usuário\""); // Cabeçalho
+            }
+            writer.write(logMessage); // Adicionando mensagem de log
+
         } catch (IOException e) {
             // Tratamento de exceção
             System.err.println("Erro ao escrever no arquivo de log: " + e.getMessage());
